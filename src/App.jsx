@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+function Square({value}){
+  function handleClick(){
+    console.log('Clicked')
+  }
+  return (<button onClick={handleClick} className="bg-white border border-gray-400 h-12 w-12 m-1 leading-9">{value}</button>)
+}
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
+export default function Board(){
+  return(
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div>
+      <Square value="1"></Square>
+      <Square value="2"></Square>
+      <Square value="3"></Square>
+    </div>
+    <div>
+      <Square value="4"></Square>
+      <Square value="5"></Square>
+      <Square value="6"></Square>
+    </div>
+    <div>
+      <Square value="7"></Square>
+      <Square value="8"></Square>
+      <Square value="9"></Square>
+    </div> 
     </>
   )
 }
-
-export default App
