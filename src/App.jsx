@@ -1,6 +1,7 @@
 import { useState } from "react"
 
 function Square(){
+  //set square components values dynamically
   const [value,setValue] = useState(null)
   function handleClick(){
     setValue("X")
