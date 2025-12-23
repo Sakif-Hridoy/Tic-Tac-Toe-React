@@ -12,10 +12,7 @@ function Square({ value, onSquareClick }) {
     </button>
   );
 }
-
-export default function Board() {
-  const [squares, setSquares] = useState(Array(9).fill(null));
-  const [xisNext, setXisNext] = useState(true);
+function Board({xisNext, squares, onPlay}) {
 
   const winner = calculateWinner(squares);
 
@@ -40,8 +37,7 @@ export default function Board() {
     } else {
       nextSquares[i] = "O"
     }
-   setSquares(nextSquares)
-   setXisNext(!xisNext)
+    onPlay(nextSquares);
     // console.log("clicked");
   }
   return (
@@ -65,6 +61,54 @@ export default function Board() {
     </>
   );
 }
+
+
+export default function Game() {
+  const [history, setHistory] = useState([Array(9).fill(null)]);
+  const [xisNext, setXisNext] = useState(true);
+
+  const currentSquares = history[history.length - 1];
+
+  function handlePlay(nextSquares) {
+    setXisNext(!xisNext);
+    setHistory([...history, nextSquares]);
+  }
+
+  const moves = history.map((squares,move)=>{
+    let description;
+    if(move >0){
+      description = `Go to the move # ${move}`
+    } else {
+      description = `Go to start the game`
+    }
+    return (
+      // eslint-disable-next-line react/jsx-key
+      <li key={move}>
+        <button>
+          {
+            description
+          }
+        </button>
+      </li>
+    )
+  })
+
+  return (
+  <div>
+     <div>
+      <Board
+        xisNext={xisNext}
+        squares={currentSquares}
+        onPlay={handlePlay}
+      />
+    </div>
+    <div>
+      <ol>{moves}</ol>
+    </div>
+  </div>
+  );
+}
+
 
 function calculateWinner(squares){
   const lines = [
