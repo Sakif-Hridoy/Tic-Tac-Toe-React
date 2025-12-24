@@ -100,8 +100,9 @@ function Board({ xisNext, squares, onPlay }) {
 export default function Game() {
   const [xisNext, setXisNext] = useState(true);
   const [history, setHistory] = useState([Array(9).fill(null)]);
+  // Current Move states
   const [currentMove, setCurrentMove] = useState(0);
-
+  // Manage History of current square
   const currentSquares = history[history.length - 1];
 
   function handlePlay(nextSquares) {
