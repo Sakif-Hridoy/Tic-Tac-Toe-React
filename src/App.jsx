@@ -145,6 +145,8 @@ export default function Game() {
   );
 }
 
+// Calulate winner is using a lines array which is winning curves or points and values are destructuring from for loop
+
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
