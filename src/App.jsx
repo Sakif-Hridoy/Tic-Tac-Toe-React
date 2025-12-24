@@ -105,6 +105,7 @@ export default function Game() {
   // Manage History of current square
   const currentSquares = history[history.length - 1];
 
+  // Control squares moves through handlePlay and control from also jumpTo function
   function handlePlay(nextSquares) {
     setXisNext(!xisNext);
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
@@ -116,7 +117,7 @@ export default function Game() {
     setCurrentMove(move);
     setXisNext(move % 2 === 0);
   }
-
+// get swuare moves from history state
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
